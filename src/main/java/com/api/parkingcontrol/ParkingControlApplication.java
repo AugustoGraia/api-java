@@ -12,7 +12,6 @@ public class ParkingControlApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ParkingControlApplication.class, args);
 
-		String text = "10";
 
 	}
 	@GetMapping("/")
