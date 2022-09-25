@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class ParkingSpotService {
 
-    @Autowired
+    @Autowired //ponto de injeção
     final ParkingSpotRepository parkingSpotRepository;
 
     public ParkingSpotService(ParkingSpotRepository parkingSpotRepository){
