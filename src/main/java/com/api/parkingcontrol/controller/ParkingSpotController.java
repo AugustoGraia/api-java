@@ -14,9 +14,9 @@ import java.time.LocalDateTime;
 import java.time.ZoneId;
 
 
-@RestController
-@CrossOrigin(origins = "*", maxAge = 3600)
-@RequestMapping("/parking-spot")
+    @RestController
+    @CrossOrigin(origins = "*", maxAge = 3600)
+    @RequestMapping("/parking-spot")
     public class ParkingSpotController {
 
     @Autowired
@@ -26,7 +26,7 @@ import java.time.ZoneId;
         this.parkingSpotService = parkingSpotService;
     }
 
-    @GetMapping
+    @PostMapping
     public ResponseEntity<Object> saveParkingSpot(@RequestBody @Valid ParkingSpotDto parkingSpotDto){
         var parkingSpotModel = new ParkingSpotModel();
         BeanUtils.copyProperties(parkingSpotDto, parkingSpotModel);
