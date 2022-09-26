@@ -10,15 +10,21 @@ import javax.transaction.Transactional;
 @Service
 public class ParkingSpotService {
 
-    @Autowired //ponto de injeção
+    @Autowired //ponto de injeção de dados no repository
     final ParkingSpotRepository parkingSpotRepository;
 
     public ParkingSpotService(ParkingSpotRepository parkingSpotRepository){
         this.parkingSpotRepository = parkingSpotRepository;
-
     }
+
     @Transactional
     public ParkingSpotModel save(ParkingSpotModel parkingSpotModel) {
         return parkingSpotRepository.save(parkingSpotModel);
+    }
+    public boolean existsByLicensePlateCar(String licensePlateCar) {
+        return parkingSpotRepository.existsByLicensePlateCar(licensePlateCar);
+    }
+    public boolean existsByParkingSpotNumber(String parkingSpotNumber){
+        return parkingSpotRepository.existsByParkingSpotNumber(parkingSpotNumber);
     }
 }
