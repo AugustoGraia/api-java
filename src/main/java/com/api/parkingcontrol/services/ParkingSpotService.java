@@ -13,7 +13,7 @@ import java.util.UUID;
 @Service
 public class ParkingSpotService {
 
-    @Autowired //ponto de injeção de dados no repository
+    @Autowired // Contrutor // ponto de injeção de dados no repository
     final ParkingSpotRepository parkingSpotRepository;
 
     public ParkingSpotService(ParkingSpotRepository parkingSpotRepository){

@@ -25,6 +25,7 @@ import java.util.UUID;
 
     @Autowired
     final ParkingSpotService parkingSpotService;
+    
 
     public ParkingSpotController(ParkingSpotService parkingSpotService) {
         this.parkingSpotService = parkingSpotService;
