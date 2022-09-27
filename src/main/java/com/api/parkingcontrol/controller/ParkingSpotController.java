@@ -18,14 +18,13 @@ import java.util.Optional;
 import java.util.UUID;
 
 
-@RestController
+    @RestController
     @CrossOrigin(origins = "*", maxAge = 3600)
     @RequestMapping("/parking-spot")
     public class ParkingSpotController {
 
-    @Autowired
+     @Autowired //Acesso ao repositorio
     final ParkingSpotService parkingSpotService;
-    
 
     public ParkingSpotController(ParkingSpotService parkingSpotService) {
         this.parkingSpotService = parkingSpotService;
@@ -48,7 +47,7 @@ import java.util.UUID;
         parkingSpotModel.setRegistrationDate(LocalDateTime.now(ZoneId.of("UTC")));
         return ResponseEntity.status(HttpStatus.CREATED).body(parkingSpotService.save(parkingSpotModel));
     }
-    @GetMapping
+    @GetMapping()
     public ResponseEntity<List<ParkingSpotModel>> getAllParkingSpot(){
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotService.findAll());
     }
