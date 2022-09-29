@@ -1,36 +1,16 @@
-package com.api.parkingcontrol.models;
+package com.api.parkingcontrol.dtos;
 
-
-import javax.persistence.*;
-import java.io.Serializable;
+import javax.validation.constraints.NotBlank;
 import java.math.BigDecimal;
-import java.util.UUID;
 
-@Entity
-@Table(name = "ProductModel")
-public class ProductModel implements Serializable {
-    private static final long serialVersionUID = 1L;
+public class ProductDto {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
-
-    @Column(nullable = false, unique = true, length = 50)
+    @NotBlank
     private String nameProduct;
-
-    @Column(nullable = false, unique = false, length = 80)
+    @NotBlank
     private String validProduct;
-
-    @Column(nullable = false)
+    @NotBlank
     private BigDecimal valueProduct;
-
-    public UUID getId() {
-        return id;
-    }
-
-    public void setId(UUID id) {
-        this.id = id;
-    }
 
     public String getNameProduct() {
         return nameProduct;
@@ -55,5 +35,4 @@ public class ProductModel implements Serializable {
     public void setValueProduct(BigDecimal valueProduct) {
         this.valueProduct = valueProduct;
     }
-
 }
