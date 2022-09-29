@@ -15,7 +15,7 @@ public class ParkingControlApplication {
 	}
 	@GetMapping("/")
 	public String Index(){
-		return "onlineee";
+		return "online";
 	}
 
 }

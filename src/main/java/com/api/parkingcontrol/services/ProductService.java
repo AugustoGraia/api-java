@@ -8,6 +8,8 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
+import java.util.UUID;
 
 @Service
 public class ProductService {
@@ -25,6 +27,9 @@ public class ProductService {
 
     public List<ProductModel> listProduct(){
         return productRepository.findAll();
+    }
+    public Optional<ProductModel> buscaPorId(UUID id){
+        return productRepository.findById(id);
     }
 
 }

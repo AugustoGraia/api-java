@@ -37,7 +37,6 @@ public class ParkingSpotService {
     public List<ParkingSpotModel> findAll() {
         return parkingSpotRepository.findAll();
     }
-
     public Optional<ParkingSpotModel> findById(UUID id) {
         return parkingSpotRepository.findById(id);
     }
