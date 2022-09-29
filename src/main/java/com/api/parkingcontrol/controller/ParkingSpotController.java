@@ -24,7 +24,7 @@ import java.util.UUID;
     public class ParkingSpotController {
 
      @Autowired //Acesso ao repositorio
-    final ParkingSpotService parkingSpotService;
+     final ParkingSpotService parkingSpotService;
 
     public ParkingSpotController(ParkingSpotService parkingSpotService) {
         this.parkingSpotService = parkingSpotService;

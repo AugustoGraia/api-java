@@ -9,7 +9,7 @@ public class ProductDto {
     private String nameProduct;
     @NotBlank
     private String validProduct;
-    @NotBlank
+
     private BigDecimal valueProduct;
 
     public String getNameProduct() {
