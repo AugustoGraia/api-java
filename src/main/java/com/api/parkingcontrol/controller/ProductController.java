@@ -6,14 +6,12 @@ import com.api.parkingcontrol.services.ProductService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.validation.Valid;
+import java.util.List;
 
-    @RestController
+@RestController
     @CrossOrigin(origins = "*", maxAge = 3600)
     public class ProductController {
 
@@ -29,5 +27,10 @@ import javax.validation.Valid;
             var productModel = new ProductModel();
             BeanUtils.copyProperties(productDto, productModel);
             return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(productModel));
+        }
+
+        @GetMapping("list-product")
+        public ResponseEntity<List<ProductModel>> listarTodosProdutos(){
+            return ResponseEntity.status(HttpStatus.OK).body(productService.listProduct());
         }
     }
