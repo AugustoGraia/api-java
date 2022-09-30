@@ -1,5 +1,6 @@
 package com.api.parkingcontrol.services;
 
+import com.api.parkingcontrol.models.EmailModel;
 import com.api.parkingcontrol.repositories.EmailRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -12,5 +13,9 @@ public class EmailService {
 
     public EmailService(EmailRepository emailRepository) {
         this.emailRepository = emailRepository;
+    }
+
+    public void enviarEmail(EmailModel emailModel) {
+
     }
 }
