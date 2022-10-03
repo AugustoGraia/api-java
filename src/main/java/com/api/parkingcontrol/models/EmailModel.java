@@ -25,11 +25,11 @@ public class EmailModel implements Serializable {
     private LocalDateTime sendDateEmail;
     private StatusEmail statusEmail;
 
-    public Long getEmailId() {
+    public UUID getEmailId() {
         return emailId;
     }
 
-    public void setEmailId(Long emailId) {
+    public void setEmailId(UUID emailId) {
         this.emailId = emailId;
     }
 
