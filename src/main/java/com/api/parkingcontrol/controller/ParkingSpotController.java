@@ -56,7 +56,7 @@ import java.util.UUID;
         Optional<ParkingSpotModel> parkingSpotModelOptional =  parkingSpotService.findById(id);
             if(!parkingSpotModelOptional.isPresent()){
                 return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Parking Spot not found!");
-        }
+            }
         return ResponseEntity.status(HttpStatus.OK).body(parkingSpotModelOptional.get());
     }
     @DeleteMapping("/{id}")
