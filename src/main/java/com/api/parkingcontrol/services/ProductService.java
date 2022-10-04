@@ -28,7 +28,7 @@ public class ProductService {
     public List<ProductModel> listProduct(){
         return productRepository.findAll();
     }
-    public Optional<ProductModel> buscaPorId(String id){
+    public Optional<ProductModel> buscaPorId(long id){
         return productRepository.findById(id);
     }
 

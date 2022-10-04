@@ -14,8 +14,8 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
-import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.linkTo;
-import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.methodOn;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
 
 @RestController
     @CrossOrigin(origins = "*", maxAge = 3600)
@@ -36,28 +36,36 @@ import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.met
     }
 
 
-//    @GetMapping("list-product")
-//    public ResponseEntity<List<ProductModel>> listarTodosProdutos() {
-//        List<ProductModel> productList = productService.listProduct();
-//        if(productList.isEmpty()){
-//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
-//        }else{
-//            for(ProductModel produto: productList){
-//                long id = produto.getId();
-//                produto.add(linkTo(methodOn(ProductController.class).listarPorId(id)).withSelfRel());
-//            }
-//
-//        }
+    @GetMapping("/list-product")
+    public ResponseEntity<List<ProductModel>> listarTodosProdutos() {
+        List<ProductModel> productList = productService.listProduct();
+        if(productList.isEmpty()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+            for(ProductModel produto: productList){
+                long id = produto.getId();
+                produto.add(linkTo(methodOn(ProductController.class).listarPorId(id)).withSelfRel());
+            }
+                return new ResponseEntity<List<ProductModel>>(productList, HttpStatus.OK);
+        }
+    }
+
+    public ResponseEntity<ProductModel> listarPorId(@PathVariable(value = "id") long id){
+        Optional<ProductModel> produto = productService.buscaPorId(id);
+        if(!produto.isPresent()){
+            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+        }else{
+            produto.get().add(linkTo( ))
+        }
+    }
+
+//    @GetMapping("lista-por-id/{id}")
+//    public ResponseEntity<Object> listarPorId(@PathVariable(value = "id") long id) {
+//        Optional<ProductModel> productModelOptional = productService.buscaPorId(id);
+//    if (!productModelOptional.isPresent()){
+//        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não existente");
 //    }
-
-
-    @GetMapping("lista-por-id/{id}")
-    public ResponseEntity<Object> listarPorId(@PathVariable(value = "id") String id) {
-        Optional<ProductModel> productModelOptional = productService.buscaPorId(id);
-    if (!productModelOptional.isPresent()){
-        return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não existente");
-    }
-    return ResponseEntity.status(HttpStatus.OK).body(productModelOptional.get());
-    }
+//    return ResponseEntity.status(HttpStatus.OK).body(productModelOptional.get());
+//    }
 
 }
