@@ -52,7 +52,7 @@ import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.met
 
 
     @GetMapping("lista-por-id/{id}")
-    public ResponseEntity<Object> listarPorId(@PathVariable(value = "id") UUID id) {
+    public ResponseEntity<Object> listarPorId(@PathVariable(value = "id") String id) {
         Optional<ProductModel> productModelOptional = productService.buscaPorId(id);
     if (!productModelOptional.isPresent()){
         return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Id não existente");
