@@ -14,6 +14,9 @@ import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
 
+import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.linkTo;
+import static org.springframework.hateoas.server.reactive.WebFluxLinkBuilder.methodOn;
+
 @RestController
     @CrossOrigin(origins = "*", maxAge = 3600)
     public class ProductController {
@@ -31,10 +34,23 @@ import java.util.UUID;
         BeanUtils.copyProperties(productDto, productModel);
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(productModel));
     }
-    @GetMapping("list-product")
-    public ResponseEntity<List<ProductModel>> listarTodosProdutos() {
-        return ResponseEntity.status(HttpStatus.OK).body(productService.listProduct());
-    }
+
+
+//    @GetMapping("list-product")
+//    public ResponseEntity<List<ProductModel>> listarTodosProdutos() {
+//        List<ProductModel> productList = productService.listProduct();
+//        if(productList.isEmpty()){
+//            return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+//        }else{
+//            for(ProductModel produto: productList){
+//                long id = produto.getId();
+//                produto.add(linkTo(methodOn(ProductController.class).listarPorId(id)).withSelfRel());
+//            }
+//
+//        }
+//    }
+
+
     @GetMapping("lista-por-id/{id}")
     public ResponseEntity<Object> listarPorId(@PathVariable(value = "id") UUID id) {
         Optional<ProductModel> productModelOptional = productService.buscaPorId(id);

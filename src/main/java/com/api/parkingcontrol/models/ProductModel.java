@@ -15,7 +15,7 @@ public class ProductModel extends RepresentationModel<ProductModel> implements S
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private UUID id;
+    private long id;
 
     @Column(nullable = false, unique = true, length = 50)
     private String nameProduct;
@@ -26,11 +26,11 @@ public class ProductModel extends RepresentationModel<ProductModel> implements S
     @Column(nullable = false)
     private BigDecimal valueProduct;
 
-    public UUID getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(UUID id) {
+    public void setId(long id) {
         this.id = id;
     }
 
