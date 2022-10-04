@@ -55,7 +55,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
         if(!produto.isPresent()){
             return new ResponseEntity<>(HttpStatus.NOT_FOUND);
         }else{
-            produto.get().add(linkTo( ))
+            produto.get().add(linkTo(methodOn(ProductController.class).listarTodosProdutos()).withRel("Lista de Produtos"));
+            return new ResponseEntity<ProductModel>(produto.get(), HttpStatus.OK);
         }
     }
 
