@@ -35,7 +35,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
         return ResponseEntity.status(HttpStatus.CREATED).body(productService.save(productModel));
     }
 
-
     @GetMapping("/list-product")
     public ResponseEntity<List<ProductModel>> listarTodosProdutos() {
         List<ProductModel> productList = productService.listProduct();
