@@ -48,6 +48,8 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
                 return new ResponseEntity<List<ProductModel>>(productList, HttpStatus.OK);
         }
     }
+
+
  @GetMapping("/listatodos/{id}")
     public ResponseEntity<ProductModel> listarPorId(@PathVariable(value = "id") long id){
         Optional<ProductModel> produto = productService.buscaPorId(id);
