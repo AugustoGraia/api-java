@@ -1,7 +1,6 @@
 package com.api.parkingcontrol.controller;
 
 import com.api.parkingcontrol.dtos.ProductDto;
-import com.api.parkingcontrol.models.ParkingSpotModel;
 import com.api.parkingcontrol.models.ProductModel;
 import com.api.parkingcontrol.services.ProductService;
 import org.springframework.beans.BeanUtils;
@@ -48,8 +47,6 @@ import static org.springframework.hateoas.server.mvc.WebMvcLinkBuilder.methodOn;
                 return new ResponseEntity<List<ProductModel>>(productList, HttpStatus.OK);
         }
     }
-
-
  @GetMapping("/listatodos/{id}")
     public ResponseEntity<ProductModel> listarPorId(@PathVariable(value = "id") long id){
         Optional<ProductModel> produto = productService.buscaPorId(id);
